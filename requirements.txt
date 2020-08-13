@@ -1,0 +1,3 @@
+# This is a sample requirements file
+# You don't need to include anything that ships with Airflow
+requests

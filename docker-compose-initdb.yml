@@ -32,7 +32,6 @@ services:
       - ./dags:/opt/airflow/dags
       - ./test_env/logs:/opt/airflow/logs
       - ./test_env/files:/opt/airflow/files
-      - /var/run/docker.sock:/var/run/docker.sock
     entrypoint: /bin/bash
     command: -c "airflow initdb && airflow pool -s bigquery 1 bigquery_connections"
     depends_on:

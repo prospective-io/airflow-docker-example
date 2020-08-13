@@ -35,7 +35,7 @@ services:
       - ./dags:/opt/airflow/dags
       - ./test_env/logs:/opt/airflow/logs
       - ./test_env/files:/opt/airflow/files
-      - ./test_env/credentials:/credentials
+      - ./nogit/credentials:/credentials
       - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
       - postgres
@@ -56,7 +56,7 @@ services:
       - ./dags:/opt/airflow/dags
       - ./test_env/logs:/opt/airflow/logs
       - ./test_env/files:/opt/airflow/files
-      - ./test_env/credentials:/credentials
+      - ./nogit/credentials:/credentials
       - /var/run/docker.sock:/var/run/docker.sock
     command: scheduler
     networks:

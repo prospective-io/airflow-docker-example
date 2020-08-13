@@ -24,13 +24,21 @@ To use the Airflow CLI, run bash inside the scheduler container:
     docker exec -it airflow-docker-example_scheduler_1 /bin/bash  
 
 
-## Complex case: build a custom image on top of the official Airflow image 
+## Complex cases: build a custom image on top of the official Airflow image 
 
-TBC 
+### Additional Python dependencies 
 
+If you need Python packages / libraries that aren't shipped with Airflow, you will need to use a custom image. 
+In this case: 
 
-## GCP credentials 
+1. Put your requirements in `requirements.txt`. 
+2. In the Dockerfile in this folder, uncomment these  two lines
+    
+       COPY requirements.txt /
+       RUN pip3 install -r /requirements.txt --user 
+ 
+3. Build the image `docker build --tag airflow-test .`. 
+4. In docker-compose.yml, replace the `image: apache/airflow` lines with `image: airflow-test`
 
-1. Using you own account: TBC 
+Every time you make change `requirements.txt`, you will have to re-build the container.    
 
-2. Using a service account: TBC
